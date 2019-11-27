@@ -1,0 +1,24 @@
+<h1>URL Validation Form</h1>
+
+<form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+
+    <h5 *ngIf="success">Your form is valid!</h5>
+
+    <label>
+      URL:
+      <input type="text" formControlName="url">
+      <div *ngIf="submitted && messageForm.controls.url.errors" class="error">
+        <div *ngIf="messageForm.controls.url.errors.required">Your url is required</div>
+        <div *ngIf="messageForm.controls.url.errors.pattern">Your url is required in URL format</div>
+      </div>
+    </label>
+  
+    <input type="submit" value="Submit URL" class="cta">
+  
+  </form>
+
+  <div *ngIf="submitted" class="results">
+    <strong>URL:</strong> 
+    <span>{{ messageForm.controls.url.value }}</span>
+
+  </div>
